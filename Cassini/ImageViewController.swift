@@ -10,6 +10,8 @@ import UIKit
 
 class ImageViewController: UIViewController, UIScrollViewDelegate {
     
+    @IBOutlet weak var spinnerView: UIActivityIndicatorView!
+    
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet {
             scrollView.contentSize = imageView.frame.size
@@ -22,7 +24,9 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     var imageURL: URL? {
         didSet {
             image = nil
-            fetchImage()
+            if view.window != nil {
+                fetchImage()
+            }
         }
     }
     
@@ -33,6 +37,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
             imageView.image = newValue
             imageView.sizeToFit()
             scrollView?.contentSize = imageView.frame.size
+            spinnerView?.stopAnimating()
         }
         
         get {
@@ -41,13 +46,22 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     private func fetchImage() {
+
         if let url = imageURL {
-            do {
-                let imageData = try Data(contentsOf: url)
-                image = UIImage(data: imageData)
-                
-            }catch {
-                print("exception in fetchImage")
+            spinnerView?.startAnimating()
+            DispatchQueue.global(qos: .userInitiated).async {
+                do {
+                    let imageData = try Data(contentsOf: url)
+                    DispatchQueue.main.async { [weak self] in
+                        if url == self?.imageURL {
+                            self?.image = UIImage(data: imageData)
+                        }else{
+                            print("ignored data returned from url \(url)")
+                        }
+                    }
+                }catch {
+                    print("exception in fetchImage")
+                }
             }
         }
     }
@@ -57,6 +71,13 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         
         scrollView.addSubview(imageView)
         //imageURL = URL(string: DemoURL.Stanford)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if image == nil {
+            fetchImage()
+        }
     }
     
     // MARK: UIScrollViewDelegate

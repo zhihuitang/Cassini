@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CassiniViewController: UIViewController {
+class CassiniViewController: UIViewController, UISplitViewControllerDelegate {
     
     private struct Storyboard {
         static let ShowImageSegue = "Show Image"
@@ -24,6 +24,21 @@ class CassiniViewController: UIViewController {
                 ivc.title = imageName
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        splitViewController?.delegate = self
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        if primaryViewController.contentViewController == self {
+            if let ivc = secondaryViewController.contentViewController as? ImageViewController {
+                return ivc.imageURL == nil ? true : false
+            }
+            
+        }
+        return false
     }
     
 }

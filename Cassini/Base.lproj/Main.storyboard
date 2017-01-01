@@ -22,12 +22,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddp-7c-I5k">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="667"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="shW-1i-D2A">
+                                <rect key="frame" x="159" y="315" width="37" height="37"/>
+                                <color key="color" red="1" green="0.102873413" blue="0.0062284134360000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ddp-7c-I5k" secondAttribute="trailing" id="Sdf-2A-hU4"/>
+                            <constraint firstItem="shW-1i-D2A" firstAttribute="centerY" secondItem="ddp-7c-I5k" secondAttribute="centerY" id="CvR-Vz-9Q0"/>
+                            <constraint firstAttribute="trailing" secondItem="ddp-7c-I5k" secondAttribute="trailing" constant="20" symbolic="YES" id="Sdf-2A-hU4"/>
+                            <constraint firstItem="shW-1i-D2A" firstAttribute="centerX" secondItem="ddp-7c-I5k" secondAttribute="centerX" id="YuD-jG-00e"/>
                             <constraint firstItem="ddp-7c-I5k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fHV-p2-Un2"/>
                             <constraint firstItem="ddp-7c-I5k" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="rai-tR-nWc"/>
                             <constraint firstItem="ddp-7c-I5k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="uem-HO-sGx"/>
@@ -36,11 +42,12 @@
                     <navigationItem key="navigationItem" id="wDg-yo-wWQ"/>
                     <connections>
                         <outlet property="scrollView" destination="ddp-7c-I5k" id="tZL-Nu-6D3"/>
+                        <outlet property="spinnerView" destination="shW-1i-D2A" id="B0o-b9-lcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="848.79999999999995" y="20.239880059970016"/>
+            <point key="canvasLocation" x="848.79999999999995" y="-23.838080959520241"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="QRW-aj-DQK">
@@ -48,7 +55,7 @@
                 <splitViewController id="9CG-PH-M5a" sceneMemberID="viewController">
                     <connections>
                         <segue destination="zRq-4f-YZs" kind="relationship" relationship="masterViewController" id="hui-RI-Zpk"/>
-                        <segue destination="kUS-fu-Y86" kind="relationship" relationship="detailViewController" id="901-vs-gqF"/>
+                        <segue destination="Sx8-Jg-jug" kind="relationship" relationship="detailViewController" id="jr9-Ud-75p"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cp8-Ru-ZAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -75,7 +82,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Earth"/>
                                         <connections>
-                                            <segue destination="kUS-fu-Y86" kind="showDetail" identifier="Show Image" id="M2t-5Z-yJC"/>
+                                            <segue destination="Sx8-Jg-jug" kind="showDetail" identifier="Show Image" id="5Xg-Hx-JcJ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSU-3z-WrT">
@@ -83,7 +90,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Cassini"/>
                                         <connections>
-                                            <segue destination="kUS-fu-Y86" kind="showDetail" identifier="Show Image" id="zu3-E3-jcF"/>
+                                            <segue destination="Sx8-Jg-jug" kind="showDetail" identifier="Show Image" id="Swi-ZC-Cz0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMy-d0-DXL">
@@ -91,7 +98,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Saturn"/>
                                         <connections>
-                                            <segue destination="kUS-fu-Y86" kind="showDetail" identifier="Show Image" id="eU6-5U-y2Y"/>
+                                            <segue destination="Sx8-Jg-jug" kind="showDetail" identifier="Show Image" id="jng-et-dPu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -128,25 +135,25 @@
             <point key="canvasLocation" x="-1028" y="-780.35982008995506"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="fuI-F6-sLP">
+        <scene sceneID="YjY-uM-I22">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kUS-fu-Y86" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sx8-Jg-jug" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LAM-TM-z1U">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gZw-6K-DEM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="jGZ-4U-bAa"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="bfT-KD-zIQ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w98-6p-xJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G4N-UP-kFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-90.400000000000006" y="20.239880059970016"/>
+            <point key="canvasLocation" x="-90.400000000000006" y="-23.838080959520241"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="zu3-E3-jcF"/>
+        <segue reference="jr9-Ud-75p"/>
     </inferredMetricsTieBreakers>
 </document>

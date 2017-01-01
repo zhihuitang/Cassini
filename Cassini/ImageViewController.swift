@@ -8,28 +8,61 @@
 
 import UIKit
 
-class ImageViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+class ImageViewController: UIViewController, UIScrollViewDelegate {
+    
+    @IBOutlet weak var scrollView: UIScrollView! {
+        didSet {
+            scrollView.contentSize = imageView.frame.size
+            scrollView.delegate = self
+            scrollView.minimumZoomScale = 0.1
+            scrollView.maximumZoomScale = 1.0
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    var imageURL: URL? {
+        didSet {
+            image = nil
+            fetchImage()
+        }
     }
-    */
-
+    
+    public var imageView = UIImageView()
+    
+    private var image: UIImage? {
+        set {
+            imageView.image = newValue
+            imageView.sizeToFit()
+            scrollView?.contentSize = imageView.frame.size
+        }
+        
+        get {
+            return imageView.image
+        }
+    }
+    
+    private func fetchImage() {
+        if let url = imageURL {
+            do {
+                let imageData = try Data(contentsOf: url)
+                image = UIImage(data: imageData)
+                
+            }catch {
+                print("exception in fetchImage")
+            }
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        scrollView.addSubview(imageView)
+        //imageURL = URL(string: DemoURL.Stanford)
+    }
+    
+    // MARK: UIScrollViewDelegate
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.imageView
+    }
+    
 }
+

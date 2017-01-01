@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		022C24721E15AE3300053ECF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24711E15AE3300053ECF /* AppDelegate.swift */; };
-		022C24741E15AE3300053ECF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24731E15AE3300053ECF /* ViewController.swift */; };
 		022C24771E15AE3300053ECF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 022C24751E15AE3300053ECF /* Main.storyboard */; };
 		022C24791E15AE3300053ECF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 022C24781E15AE3300053ECF /* Assets.xcassets */; };
 		022C247C1E15AE3300053ECF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 022C247A1E15AE3300053ECF /* LaunchScreen.storyboard */; };
 		022C24871E15AE3300053ECF /* CassiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24861E15AE3300053ECF /* CassiniTests.swift */; };
 		022C24921E15AE3300053ECF /* CassiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24911E15AE3300053ECF /* CassiniUITests.swift */; };
+		022C24A11E15AE7600053ECF /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24A01E15AE7600053ECF /* ImageViewController.swift */; };
+		022C24A31E15B2ED00053ECF /* DemoURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022C24A21E15B2ED00053ECF /* DemoURL.swift */; };
+		02F8613B1E19A57600F18FBC /* CassiniViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F8613A1E19A57600F18FBC /* CassiniViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,6 @@
 /* Begin PBXFileReference section */
 		022C246E1E15AE3200053ECF /* Cassini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cassini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		022C24711E15AE3300053ECF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		022C24731E15AE3300053ECF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		022C24761E15AE3300053ECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		022C24781E15AE3300053ECF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		022C247B1E15AE3300053ECF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,9 @@
 		022C248D1E15AE3300053ECF /* CassiniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CassiniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		022C24911E15AE3300053ECF /* CassiniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassiniUITests.swift; sourceTree = "<group>"; };
 		022C24931E15AE3300053ECF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		022C24A01E15AE7600053ECF /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		022C24A21E15B2ED00053ECF /* DemoURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoURL.swift; sourceTree = "<group>"; };
+		02F8613A1E19A57600F18FBC /* CassiniViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CassiniViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,11 @@
 		022C24701E15AE3300053ECF /* Cassini */ = {
 			isa = PBXGroup;
 			children = (
-				022C24711E15AE3300053ECF /* AppDelegate.swift */,
-				022C24731E15AE3300053ECF /* ViewController.swift */,
+				022C24A01E15AE7600053ECF /* ImageViewController.swift */,
+				02F8613A1E19A57600F18FBC /* CassiniViewController.swift */,
+				022C24A21E15B2ED00053ECF /* DemoURL.swift */,
 				022C24751E15AE3300053ECF /* Main.storyboard */,
-				022C24781E15AE3300053ECF /* Assets.xcassets */,
-				022C247A1E15AE3300053ECF /* LaunchScreen.storyboard */,
-				022C247D1E15AE3300053ECF /* Info.plist */,
+				022C249F1E15AE4100053ECF /* Supporting files */,
 			);
 			path = Cassini;
 			sourceTree = "<group>";
@@ -123,6 +126,17 @@
 				022C24931E15AE3300053ECF /* Info.plist */,
 			);
 			path = CassiniUITests;
+			sourceTree = "<group>";
+		};
+		022C249F1E15AE4100053ECF /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				022C24711E15AE3300053ECF /* AppDelegate.swift */,
+				022C24781E15AE3300053ECF /* Assets.xcassets */,
+				022C247A1E15AE3300053ECF /* LaunchScreen.storyboard */,
+				022C247D1E15AE3300053ECF /* Info.plist */,
+			);
+			name = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				022C24741E15AE3300053ECF /* ViewController.swift in Sources */,
+				022C24A11E15AE7600053ECF /* ImageViewController.swift in Sources */,
 				022C24721E15AE3300053ECF /* AppDelegate.swift in Sources */,
+				022C24A31E15B2ED00053ECF /* DemoURL.swift in Sources */,
+				02F8613B1E19A57600F18FBC /* CassiniViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +530,7 @@
 				022C24981E15AE3300053ECF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		022C24991E15AE3300053ECF /* Build configuration list for PBXNativeTarget "CassiniTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +539,7 @@
 				022C249B1E15AE3300053ECF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		022C249C1E15AE3300053ECF /* Build configuration list for PBXNativeTarget "CassiniUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +548,7 @@
 				022C249E1E15AE3300053ECF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
